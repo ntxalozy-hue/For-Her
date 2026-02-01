@@ -1,2 +1,113 @@
-index.html
-const correct = "4444";
+<!DOCTYPE html>
+<html>
+<head>
+  <title>💖 Valentine 💖</title>
+  <style>
+    body {
+      background-color: #ffd1dc;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      overflow: hidden;
+    }
+    button, input {
+      font-size: 20px;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    #no {
+      position: absolute;
+    }
+    .heart {
+      position: absolute;
+      color: red;
+      font-size: 24px;
+      animation: float 4s linear infinite;
+    }
+    @keyframes float {
+      0% {transform: translateY(0);}
+      100% {transform: translateY(-600px);}
+    }
+  </style>
+</head>
+<body>
+
+<!-- PASSWORD SCREEN -->
+<div id="lock">
+  <h1>This page is only for you 💕</h1>
+  <p>Enter the secret code 😌</p>
+  <input type="password" id="pass" placeholder="Hint: The date of your birthday!!!">
+  <br>
+  <button onclick="unlock()">Enter 💖</button>
+  <p id="error"></p>
+</div>
+
+<!-- MAIN VALENTINE PAGE -->
+<div id="valentine" style="display:none;">
+  <h1>Will you be my Valentine, Dione? 💕</h1>
+  <button onclick="yes()">YES 💖</button>
+  <button id="no" onmouseover="move()">NO 😢</button>
+</div>
+
+<!-- YOUTUBE AUDIO (video hidden) -->
+<iframe id="videoMusic" style="display:none;" width="0" height="0"
+  src="https://www.youtube.com/embed/OFDTqxlgWOw?autoplay=1&loop=1&playlist=OFDTqxlgWOw"
+  frameborder="0" allow="autoplay; encrypted-media">
+</iframe>
+
+<script>
+  // PASSWORD SCREEN
+  function unlock() {
+    const correct = "131008"; // <-- change to your secret code
+    const input = document.getElementById("pass").value;
+    if(input === correct){
+      document.getElementById("lock").style.display="none";
+      document.getElementById("valentine").style.display="block";
+    } else {
+      document.getElementById("error").innerText="Hmm… that’s not it 😏";
+    }
+  }
+
+  // YES button
+  function yes() {
+    document.getElementById("videoMusic").style.display="block"; // start music
+    document.body.innerHTML = "<h1>YAY!!! 🥰💘<br>Dione, you’re my Valentine forever!</h1>";
+    createHearts();
+  }
+
+  // NO button chaos
+  function move() {
+    const no = document.getElementById("no");
+    no.style.left = Math.random() * (window.innerWidth - 100) + "px";
+    no.style.top = Math.random() * (window.innerHeight - 100) + "px";
+  }
+
+  // Floating hearts
+  function createHearts() {
+    for(let i=0;i<30;i++){
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random()*window.innerWidth + "px";
+      heart.style.top = window.innerHeight + "px";
+      heart.innerText = "💖";
+      document.body.appendChild(heart);
+      animateHeart(heart);
+    }
+  }
+
+  function animateHeart(heart){
+    let top = window.innerHeight;
+    const id = setInterval(()=>{
+      top -= 2;
+      heart.style.top = top + "px";
+      if(top < -50) {
+        heart.remove();
+        clearInterval(id);
+      }
+    },20);
+  }
+</script>
+
+</body>
+</html>
