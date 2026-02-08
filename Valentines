@@ -46,6 +46,12 @@
 <!-- MAIN VALENTINE PAGE -->
 <div id="valentine" style="display:none;">
   <h1>Will you be my Valentine, Dione? 💕</h1>
+
+  <!-- IMAGE (hidden at first) -->
+  <img id="yesImage" src="love.png"
+       style="display:none; width:300px; border-radius:20px; margin:20px auto;">
+
+  <br>
   <button onclick="yes()">YES 💖</button>
   <button id="no" onmouseover="move()">NO 😢</button>
 </div>
