@@ -50,11 +50,11 @@
   <button id="no" onmouseover="move()">NO 😢</button>
 </div>
 
-<!-- YOUTUBE AUDIO (video hidden) -->
-<iframe id="videoMusic" style="display:none;" width="0" height="0"
-  src="https://www.youtube.com/embed/OFDTqxlgWOw?autoplay=1&loop=1&playlist=OFDTqxlgWOw"
-  frameborder="0" allow="autoplay; encrypted-media">
-</iframe>
+<!-- BACKGROUND MUSIC -->
+<audio id="music" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 
 <script>
   // PASSWORD SCREEN
